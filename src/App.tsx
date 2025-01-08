@@ -8,7 +8,7 @@ function App() {
   return (
     <>
     <h1>Memory Quiz</h1>
-    <MemoryCard title="Kiefer"/>
+    <MemoryCard title="Cat1"/>
     </>
   )
 }
