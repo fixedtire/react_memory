@@ -44,12 +44,30 @@ fetchData();
   // toggles the state of a memory card and flips it
 
   const flipCard = (index: number): void => {
+    const turnedCards = cards.filter(obj => obj.isHidden === false).length;
+
+    if (turnedCards < 2) {
     turnCard((prevState) => prevState.map((card) => 
       card.id === index ?
       {...card, isHidden: !card.isHidden} : card
     )
-    )
+    )};
+
+    if (turnedCards === 2) {
+      alert('hide cards first!');
+      turnCard((prevState) => prevState.map((card) => 
+      card.isHidden === false ?
+      {...card, isHidden: !card.isHidden} : card
+    ));
+      const mustHide = cards.filter(obj => obj.isHidden === false);
+      const hideCard1 = document.getElementById(`card-${mustHide[0].id}`);
+      const hideCard2 = document.getElementById(`card-${mustHide[1].id}`);
+      hideCard1.classList.add('flipped');
+      hideCard2.classList.add('flipped');
+    };
 };
+
+
 
 
 useEffect(() => {
