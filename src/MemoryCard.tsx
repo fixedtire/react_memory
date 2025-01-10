@@ -6,6 +6,7 @@ interface MemoryCardProps {
   id: number;
   isHidden: boolean;
   url: string;
+  isMatched: boolean;
 }
 
 const MemoryCard: React.FC<MemoryCardProps> = ({ onClick, id, url }) => {
