@@ -36,6 +36,7 @@
   
   .flip-card-front, .flip-card-back {
     position: absolute;
+    border-radius: 15%;
     backface-visibility: hidden;
     display: flex;
     justify-content: center;
@@ -51,6 +52,13 @@
   }
 
   .flip-card-front img {
+    border-radius: 15%;
+    width: 80%;
+    height: 80%;
+  }
+
+  .flip-card-back img {
+    border-radius: 15%;
     width: 80%;
     height: 80%;
   }

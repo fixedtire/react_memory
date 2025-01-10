@@ -1,4 +1,5 @@
 import './App.scss'
+import catLogo from './assets/images/cat_icon.png'; 
 
 interface MemoryCardProps {
   onClick: () => void;
@@ -6,7 +7,7 @@ interface MemoryCardProps {
   isHidden: boolean;
 }
 
-const MemoryCard: React.FC<MemoryCardProps> = ({ onClick, id, isHidden }) => {
+const MemoryCard: React.FC<MemoryCardProps> = ({ onClick, id }) => {
 
         
     return (
@@ -16,13 +17,13 @@ const MemoryCard: React.FC<MemoryCardProps> = ({ onClick, id, isHidden }) => {
 
     <div className="flip-card-front">
 
-      <img src="https://cataas.com/cat" alt="random cat" />
+    <img src={catLogo} alt="click" />
 
     </div>
 
     <div className="flip-card-back">
 
-    
+    <img src="https://cataas.com/cat" alt="random cat" />
 
     </div>
 
