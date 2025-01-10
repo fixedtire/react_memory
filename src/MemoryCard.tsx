@@ -36,13 +36,13 @@ const MemoryCard: React.FC<MemoryCardProps> = ({title}) => {
 
     <div className="flip-card-front">
 
-      <h1>{title}</h1>
+      <img src="https://cataas.com/cat" alt="random cat" />
 
     </div>
 
     <div className="flip-card-back">
 
-      <h1>Back</h1>
+    
 
     </div>
 
