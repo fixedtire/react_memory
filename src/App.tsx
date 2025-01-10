@@ -64,9 +64,7 @@ fetchData();
         {...card, isHidden: !card.isHidden, isMatched: true} : card
       )
       ); 
-      if (cards.every(obj => obj.isMatched === true)) {
-        alert('😻 yippie!!! found all cats');
-      } else if (openCards.length === 2) {
+    } else if (openCards.length === 2) {
       
       turnCard((prevState) => prevState.map((card) => 
       card.isHidden === false ?
@@ -76,8 +74,7 @@ fetchData();
       const openCard2 = document.getElementById(`card-${openCards[1].id}`);
       openCard1.classList.add('flipped');
       openCard2.classList.add('flipped');
-    }};
-
+    };
 };
 
 
@@ -94,6 +91,13 @@ useEffect(() => {
       }
     }
   });
+
+  const allMatched = cards.every(obj => obj.isMatched === true);
+  if (allMatched) {
+    setTimeout(() => {
+      alert('😻 yippie!!! found all cats');
+  }, 1000);
+  }
 }, [cards]);
 
   
