@@ -1,31 +1,16 @@
 import './App.scss'
-import React, { useState, useEffect } from 'react';
 
+interface MemoryCardProps {
+  onClick: () => void;
+  id: number;
+  isHidden: boolean;
+}
 
-const MemoryCard: React.FC = () => {
-
-  // State of one memory card, if false, memory card is hidden
-
-  const [cardHidden, turnCard] = useState(true);
-
-  // toggles the state of this memory card and flips it
-
-  const flipCard = () => {
-    turnCard(!cardHidden);
-  };
-
-  useEffect(() => {
-    const cardElement = document.getElementById('card');
-    if (cardElement) {
-      cardHidden
-        ? cardElement.classList.add('flipped')
-        : cardElement.classList.remove('flipped');
-    }
-  }, [cardHidden]);
+const MemoryCard: React.FC<MemoryCardProps> = ({ onClick, id, isHidden }) => {
 
         
     return (
-      <div className="flip-card" id="card" onClick={flipCard}>
+      <div id={`card-${id}`} className="flip-card" onClick={onClick}>
 
   <div className="flip-card-inner">
 

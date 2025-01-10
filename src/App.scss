@@ -6,6 +6,10 @@
     background-color: beige;
 }
 
+#root {
+  margin: auto;
+}
+
 .memory-grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
