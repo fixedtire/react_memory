@@ -1,13 +1,8 @@
 import './App.scss'
 import React, { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 
-interface MemoryCardProps {
-  title: string;
-}
 
-const MemoryCard: React.FC<MemoryCardProps> = ({title}) => {
+const MemoryCard: React.FC = () => {
 
   // State of one memory card, if false, memory card is hidden
 
