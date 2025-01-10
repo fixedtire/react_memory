@@ -6,10 +6,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 function App() {
 
   return (
-    <>
+    <div className='memory-grid-container'>
     <h1>Memory Quiz</h1>
     <MemoryCard title="Cat1"/>
-    </>
+    </div>
   )
 }
 
