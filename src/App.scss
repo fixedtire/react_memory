@@ -97,3 +97,12 @@
     }
   }
   
+  @media (max-width: 480px) {
+    .flip-card {
+      padding: 0;
+      background-color: transparent;
+      width: 24vw;
+      height: 23vh;
+      perspective: 1000px;
+    }
+  }

@@ -57,8 +57,9 @@ fetchData();
     if (openCards.length === 2 && openCards[0].url === openCards[1].url) {
       const openCard1 = document.getElementById(`card-${openCards[0].id}`);
       const openCard2 = document.getElementById(`card-${openCards[1].id}`);
+      if (openCard1 && openCard2){
       openCard1.classList.add('fade');
-      openCard2.classList.add('fade');
+      openCard2.classList.add('fade');}
       turnCard((prevState) => prevState.map((card) => 
         card.isHidden === false ?
         {...card, isHidden: !card.isHidden, isMatched: true} : card
@@ -72,8 +73,10 @@ fetchData();
     ));
       const openCard1 = document.getElementById(`card-${openCards[0].id}`);
       const openCard2 = document.getElementById(`card-${openCards[1].id}`);
+      if (openCard1 && openCard2){
       openCard1.classList.add('flipped');
       openCard2.classList.add('flipped');
+    }
     };
 };
 
