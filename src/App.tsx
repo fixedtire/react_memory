@@ -1,4 +1,5 @@
 import './App.scss'
+import catPics from './CatImages';
 import MemoryCard from './MemoryCard'
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,19 +7,38 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const App = () => {
 
+// fetch data from cat API
+
+let fetchedCats:[];
+
+const url = 'https://cataas.com/api/cats';
+
+async function fetchData() {
+  try {
+    const response = await fetch(url); 
+    fetchedCats = await response.json(); 
+    console.log("Data fetched and stored:", fetchedCats);
+
+  } catch (error) {
+    console.error('Error fetching data:', error); 
+  }
+}
+
+fetchData();
+
   const [cards, turnCard] = useState([
-    { id: 1, isHidden: true}, 
-    { id: 2, isHidden: true},
-    { id: 3, isHidden: true}, 
-    { id: 4, isHidden: true}, 
-    { id: 5, isHidden: true}, 
-    { id: 6, isHidden: true}, 
-    { id: 7, isHidden: true}, 
-    { id: 8, isHidden: true}, 
-    { id: 9, isHidden: true}, 
-    { id: 10, isHidden: true}, 
-    { id: 11, isHidden: true}, 
-    { id: 12, isHidden: true}, 
+    { id: 1, isHidden: true, url: catPics[0]}, 
+    { id: 2, isHidden: true, url: catPics[1]},
+    { id: 3, isHidden: true, url: catPics[2]}, 
+    { id: 4, isHidden: true, url: catPics[5]}, 
+    { id: 5, isHidden: true, url: catPics[3]}, 
+    { id: 6, isHidden: true, url: catPics[1]}, 
+    { id: 7, isHidden: true, url: catPics[4]}, 
+    { id: 8, isHidden: true, url: catPics[2]}, 
+    { id: 9, isHidden: true, url: catPics[0]}, 
+    { id: 10, isHidden: true, url: catPics[5]}, 
+    { id: 11, isHidden: true, url: catPics[4]}, 
+    { id: 12, isHidden: true, url: catPics[3]},
   ]);
 
   // toggles the state of a memory card and flips it
@@ -51,6 +71,7 @@ useEffect(() => {
       key={card.id}
       id={card.id}
       isHidden={card.isHidden}
+      url={card.url}
       onClick={() => flipCard(card.id)}
     />
   ));

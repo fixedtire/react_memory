@@ -5,9 +5,10 @@ interface MemoryCardProps {
   onClick: () => void;
   id: number;
   isHidden: boolean;
+  url: string;
 }
 
-const MemoryCard: React.FC<MemoryCardProps> = ({ onClick, id }) => {
+const MemoryCard: React.FC<MemoryCardProps> = ({ onClick, id, url }) => {
 
         
     return (
@@ -23,7 +24,7 @@ const MemoryCard: React.FC<MemoryCardProps> = ({ onClick, id }) => {
 
     <div className="flip-card-back">
 
-    <img src="https://cataas.com/cat" alt="random cat" />
+    <img src={url} alt="random cat" />
 
     </div>
 
@@ -31,11 +32,6 @@ const MemoryCard: React.FC<MemoryCardProps> = ({ onClick, id }) => {
 
 </div>
     )
-            
-              {/* Bootstrap Style Card for one Memory Card
-
-              
-              */}
 }
 
 export default MemoryCard
