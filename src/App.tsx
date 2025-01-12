@@ -7,25 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const App = () => {
 
-// fetch data from cat API
-
-let fetchedCats:[];
-
-const url = 'https://cataas.com/api/cats';
-
-async function fetchData() {
-  try {
-    const response = await fetch(url); 
-    fetchedCats = await response.json(); 
-    console.log("Data fetched and stored:", fetchedCats);
-
-  } catch (error) {
-    console.error('Error fetching data:', error); 
-  }
-}
-
-fetchData();
-
+// useState -> state of cards (id, isHidden, isMatched) 
   const [cards, turnCard] = useState([
     { id: 1, isHidden: true, url: catPics[0], isMatched: false}, 
     { id: 2, isHidden: true, url: catPics[1], isMatched: false},
@@ -41,22 +23,25 @@ fetchData();
     { id: 12, isHidden: true, url: catPics[3], isMatched: false},
   ]);
 
-  // toggles the state of a memory card and flips it
-
+  // Setfunction -> toggles state of memory cards
   const flipCard = (index: number): void => {
-
+    // array of all cards that are visible
     let openCards = cards.filter(obj => obj.isHidden === false);
-
+    /* 
+    * if less than two cards are visible, onClick isHidden -> true
+    * to allow only two visible cards on table
+    */
     if (openCards.length < 2) {
     turnCard((prevState) => prevState.map((card) => 
       card.id === index ?
       {...card, isHidden: !card.isHidden} : card
     )
     )};
-
+    // if two cards are visible, check if they have the same picture
     if (openCards.length === 2 && openCards[0].url === openCards[1].url) {
       const openCard1 = document.getElementById(`card-${openCards[0].id}`);
       const openCard2 = document.getElementById(`card-${openCards[1].id}`);
+      // if the two cards match, let them fade and set isMatched -> true
       if (openCard1 && openCard2){
       openCard1.classList.add('fade');
       openCard2.classList.add('fade');}
@@ -65,6 +50,7 @@ fetchData();
         {...card, isHidden: !card.isHidden, isMatched: true} : card
       )
       ); 
+    // if two cards are visible, flip back and change back state isHidden -> true
     } else if (openCards.length === 2) {
       
       turnCard((prevState) => prevState.map((card) => 
@@ -80,9 +66,11 @@ fetchData();
     };
 };
 
-
-
-
+/*
+* we change state of 'cards' with onClick-function
+* if state 'cards' change, flip card when its state got changed
+* if all cards are matched, show win-message
+*/
 useEffect(() => {
   cards.forEach((card) => {
     const cardElement = document.getElementById(`card-${card.id}`);
@@ -103,7 +91,7 @@ useEffect(() => {
   }
 }, [cards]);
 
-  
+// creates array (cardsOnTable) of MemoryCard-components with attributes (key,id,isHidden,url etc.)
   const cardsOnTable = cards.map((card) => (
     <MemoryCard
       key={card.id}
@@ -114,7 +102,7 @@ useEffect(() => {
       onClick={() => flipCard(card.id)}
     />
   ));
-
+// renders the components that are in the cardsOnTable-array 
   return (
     <div className='memory-grid-container'>
     {cardsOnTable}
